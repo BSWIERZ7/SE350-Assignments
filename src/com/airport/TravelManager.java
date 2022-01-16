@@ -1,0 +1,55 @@
+package com.airport;
+
+import com.airport.exception.BadParameterException;
+import com.airport.exception.NullParameterException;
+
+
+import java.sql.Time;
+import java.text.DateFormat;
+import java.util.Calendar;
+import java.util.Objects;
+import java.util.Date;
+import static java.util.Calendar.PM;
+import static java.util.Calendar.getAvailableCalendarTypes;
+import java.util.Calendar.Builder;
+
+//Initialize One Airport
+//Initialize One Airline
+//Initialize One Flight
+//Then pass your Flight Variable to System.out
+public class TravelManager {
+    public static void main(String[] args) throws NullParameterException, BadParameterException {
+        //Flight flight = new Flight("WEFLY", "ABC", "XYZ", "FLIGHTINESS", ); //must be Alphabetic & Must be capitalized
+        //Airline airline = new Airline("ALPHA"); //must be less than 8 Characters
+        //Flight flight2 = new Flight("2FAST", "DEF", "XYZ", "321", "12-3-10 5PM");
+        //Flight flight = new Flight("555", "");
+
+        //System.out.println("Inside Travel Manager Testing");
+        //System.out.println(flight2);
+        // = new Flight("444");
+
+        Airport airportOrigin = new Airport("ABC"); //initializing Airport
+        Airport airportDestination = new Airport("XYZ"); //initializing destination airport
+        Airline airline = new Airline("MYAIR"); //initializing airline
+        //Date date = new Date(2022, 02, 05);
+        Date departureTime = new Date(2022, Calendar.MARCH, 5, 5, 0);
+
+        //getAvailableCalendarTypes();
+
+        //date = new Date(2022, 03, 05, 5, 00);
+        //Flight flight = new Flight("MYAIR", "ABC", "XYZ", "321", 2022);
+        Flight flight = new Flight(airline, airportOrigin, airportDestination, "321", departureTime);
+        //Flight flight = new Flight(airline, airportOrigin, airportDestination, "321", );
+        System.out.println(flight);
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
+    }
+}
