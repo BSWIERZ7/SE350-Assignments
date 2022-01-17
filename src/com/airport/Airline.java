@@ -1,12 +1,13 @@
 package com.airport;
 
 import com.airport.exception.BadParameterException;
-
+//needs hashcode + equals
 public class Airline {
     private String name;
 
-    public Airline(String name) { //constructor
-        this.name = name;
+    public Airline(String name) throws BadParameterException { //constructor
+        //this.name = name;
+        setName(name);
     }
 
     public String getName() { //getter
@@ -27,5 +28,9 @@ public class Airline {
         sb.append(String.format("%-8s", name));
 
         return sb.toString();
+    }
+
+    public int length() { //for length of airline Name
+        return name.length();
     }
 }

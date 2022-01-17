@@ -32,14 +32,15 @@ public class TravelManager {
         Airport airportDestination = new Airport("XYZ"); //initializing destination airport
         Airline airline = new Airline("MYAIR"); //initializing airline
         //Date date = new Date(2022, 02, 05);
-        Date departureTime = new Date(2022, Calendar.MARCH, 5, 5, 0);
+        Date departureTime = new Date(2022, 2, 5, 5, 0);
+        //Date flight2;
+        //flight2 = getDepartureTime();
 
-        //getAvailableCalendarTypes();
 
-        //date = new Date(2022, 03, 05, 5, 00);
         //Flight flight = new Flight("MYAIR", "ABC", "XYZ", "321", 2022);
+        //Flight flight = new Flight(airline, airportOrigin, airportDestination, "321", departureTime);
         Flight flight = new Flight(airline, airportOrigin, airportDestination, "321", departureTime);
-        //Flight flight = new Flight(airline, airportOrigin, airportDestination, "321", );
+        //Flight flight = new Flight(airline, airportOrigin, airportDestination, "321", departureTime);
         System.out.println(flight);
     }
 

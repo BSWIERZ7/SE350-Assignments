@@ -5,10 +5,8 @@ import com.airport.exception.NullParameterException;
 
 import java.util.Date;
 import java.util.Objects;
-import static java.util.Calendar.PM;
-import java.sql.Time;
-import java.util.Calendar;
-
+import java.lang.String;
+import java.lang.*;
 public class Flight {
     private Airline airline; //airline: Airline
     private Airport origin; //origin: Airport
@@ -33,6 +31,16 @@ public class Flight {
     public void setAirline(Airline airline) { //setter
         this.airline = airline;
     }
+
+//    public void setAirline(Airline airline) throws BadParameterException { //setter name MUST be less than 8 Characters
+//        //int Airlinelength = name.length();
+//        int airLineLength = airline.length();
+////        if (airLineLengthength >= 8 ) {
+//        if (airline.length() >= 8 ) {
+//            throw new BadParameterException("Bad Name passed to setName: " + airline);
+//        }
+//        this.airline = airline; //name is between 1-7 chars. This line will never execute if above Exception is thrown
+//    }
 
     public Airport getOrigin() { //getter
         return origin;
@@ -75,8 +83,8 @@ public class Flight {
         sb.append(String.format("%-20s %s%n", "Origin: ", origin));
         sb.append(String.format("%-20s %s%n", "Destination: ", destination));
         sb.append(String.format("%-20s %s%n", "FlightNumber: ", flightNumber));
-        //sb.append(String.format("DepartureTime: ", departureTime));
-        sb.append(String.format("DepartureTime: ", getDepartureTime()));
+        sb.append(String.format("DepartureTime: ", departureTime));
+        //sb.append(String.format("DepartureTime: ", getDepartureTime()));
 
         return sb.toString();
     }
