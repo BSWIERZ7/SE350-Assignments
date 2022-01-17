@@ -6,6 +6,9 @@ import com.airport.exception.NullParameterException;
 
 import java.sql.Time;
 import java.text.DateFormat;
+import java.text.FieldPosition;
+import java.text.ParsePosition;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Objects;
 import java.util.Date;
@@ -31,15 +34,23 @@ public class TravelManager {
         Airport airportOrigin = new Airport("ABC"); //initializing Airport
         Airport airportDestination = new Airport("XYZ"); //initializing destination airport
         Airline airline = new Airline("MYAIR"); //initializing airline
-        //Date date = new Date(2022, 02, 05);
-        Date departureTime = new Date(2022, 2, 5, 5, 0);
+
+        //Airport airportOrigin = new Airport(""); //TEST FOR NULL
+        //Airport airportDestination = new Airport(""); //TEST FOR NULL
+        //Airline airline = new Airline(""); //TEST FOR NULL
+        Date departureTime = new Date(2022, 0, 15, 5, 00);
+        //System.out.println("departureTime = " + departureTime);
+        //Date date = "2022/02/05 - 5 PM";
+        //SimpleDateFormat departureDateAndTime = new SimpleDateFormat(DD/MM/YYYY/HR);
+        //Date date = new Date();
+        //Date departureTime = new Date("2022, 2, 5, 5, 0");
         //Date flight2;
         //flight2 = getDepartureTime();
 
 
         //Flight flight = new Flight("MYAIR", "ABC", "XYZ", "321", 2022);
         //Flight flight = new Flight(airline, airportOrigin, airportDestination, "321", departureTime);
-        Flight flight = new Flight(airline, airportOrigin, airportDestination, "321", departureTime);
+        Flight flight = new Flight(airline, airportOrigin, airportDestination, "", departureTime);
         //Flight flight = new Flight(airline, airportOrigin, airportDestination, "321", departureTime);
         System.out.println(flight);
     }

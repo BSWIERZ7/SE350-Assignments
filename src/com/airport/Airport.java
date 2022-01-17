@@ -1,6 +1,7 @@
 package com.airport;
 
 import com.airport.exception.BadParameterException;
+import com.airport.exception.NullParameterException;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Locale;
@@ -11,21 +12,21 @@ import java.util.Objects;
 public class Airport {
     private String name;
 
-    public Airport(String name) throws BadParameterException { //constructor
+    public Airport(String name) throws BadParameterException, NullParameterException { //constructor
         setName(name);
     }
 
     public String getName() { //getter
         return name;
     }
-/*
-    public void setName(String name) { //setter - THROW BadParameter Exception
-        this.name = name;
-    }
- */
-    public void setName(String name) throws BadParameterException { //setter - THROW BadParameter Exception
+
+    public void setName(String name) throws BadParameterException, NullParameterException { //setter - THROW BadParameter Exception
         //this.name = name.toUpperCase(name);
         //this.name = name.toUpperCase();
+
+        if (name == null | Objects.equals(name, "")) { //equals check if given "" as input
+            throw new NullParameterException("Null value passed to Airline Name");
+        }
 
         //CHECKS IF GIVEN NAME IS 3 CHARACTERS
         if(name.length() != 3) {
