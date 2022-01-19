@@ -17,14 +17,11 @@ public class Flight {
     private Date departureTime; //departureTime: Date
 
     public Flight(Airline airline, Airport origin, Airport destination, String flightNumber, Date departureTime) throws NullParameterException, BadParameterException {
-        //setDepartureTime(departureTime);
-        //this.flightNumber = flightNumber;
         setAirline(airline);
         setOrigin(origin);
         setDestination(destination);
         setFlightNumber(flightNumber);
         setDepartureTime(departureTime);
-        //add a set flightNumber that will return random ID ->setFlightNumber(flightNumber)
     }
 
    public Airline getAirline() { //getter
@@ -34,16 +31,6 @@ public class Flight {
     public void setAirline(Airline airline) { //setter
         this.airline = airline;
     }
-
-//    public void setAirline(Airline airline) throws BadParameterException { //setter name MUST be less than 8 Characters
-//        //int Airlinelength = name.length();
-//        int airLineLength = airline.length();
-////        if (airLineLengthength >= 8 ) {
-//        if (airline.length() >= 8 ) {
-//            throw new BadParameterException("Bad Name passed to setName: " + airline);
-//        }
-//        this.airline = airline; //name is between 1-7 chars. This line will never execute if above Exception is thrown
-//    }
 
     public Airport getOrigin() { //getter
         return origin;
@@ -66,14 +53,12 @@ public class Flight {
     }
 
     public void setFlightNumber(String flightNumber) { //setter
-        //String randomFlightNum = temp.UUID();
         String randomFlightNum = String.valueOf(UUID.randomUUID());
         char UUID_1 = randomFlightNum.charAt(1);
         char UUID_2 = randomFlightNum.charAt(2);
         char UUID_3 = randomFlightNum.charAt(3);
         char UUID_4 = randomFlightNum.charAt(4);
         String newFlightNumber = String.valueOf((UUID_1 + UUID_2 + UUID_3 + UUID_4));
-        //System.out.println("randomFlightNum = " + randomFlightNum);
 
         this.flightNumber = newFlightNumber;
     }
@@ -83,10 +68,8 @@ public class Flight {
     }
 
     public void setDepartureTime(Date departureTime) {
-        //System.out.println("inside setDepartureTime: " + departureTime);
         this.departureTime = departureTime;
-        //this.setDepartureTime(departureTime);
-        //this.departureTime = getDepartureTime();
+
     }
 
     @Override
@@ -97,7 +80,6 @@ public class Flight {
         sb.append(String.format("%-20s %s%n", "Destination: ", destination));
         sb.append(String.format("%-20s %s%n", "FlightNumber: ", flightNumber));
         sb.append(String.format("%-20s %s%n", "DepartureTime: ", departureTime));
-        //sb.append(String.format("DepartureTime: ", getDepartureTime()));
 
         return sb.toString();
     }
