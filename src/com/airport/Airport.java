@@ -2,6 +2,7 @@ package com.airport;
 
 import com.airport.exception.BadParameterException;
 import com.airport.exception.NullParameterException;
+
 import java.util.Objects;
 
 
@@ -13,47 +14,54 @@ public class Airport {
         setName(name);
     }
 
-    public String getName() { //getter
+    private String getName() { //getter
         return name;
     }
 
-    public void setName(String name) throws BadParameterException, NullParameterException { //setter - THROW BadParameter Exception
-
-        if (name == null | Objects.equals(name, "")) { //equals check if given "" as input
-            throw new NullParameterException("Null value passed to Airline Name");
+    private void setName(String name) throws NullParameterException, BadParameterException {
+        if (name == null) {
+            throw new NullParameterException("Airport name cannot be null.");
         }
 
-        //CHECKS IF GIVEN NAME IS 3 CHARACTERS
-        if(name.length() != 3) {
-            throw new BadParameterException("Incorrect Name Length - REQ: 3 Characters. Given Name: " + name);
+        if (name.length() != 3 || !name.equals(name.toUpperCase())) {
+            throw new BadParameterException("Invalid name.");
         }
 
-        //CHECK IF NAME IS UPPERCASE - compare given name to uppercase version
-        String upperCaseCheck = name.toUpperCase();
-        if(name != upperCaseCheck) {
-            throw new BadParameterException("Bad name passed -- Not uppercase " + name);
-        }
-
-        //CHECK IF NAME IS ALPHABETIC - compares char ascii values
-        for(int index = 0; index < name.length()-1; index++) { //a = 97, b = 98
-            if(name.charAt(index) > name.charAt(index+1)) { //index[0] > index[1]
-                throw new BadParameterException("Bad name passed -- Not Alphabetic " + name);
-                //System.out.println("isAlphabetical? " + result);
-            }
-            else //index[0] < index[1] -> a(97) < b(98) - CONTINUE CHECK
-                continue;
-        }
-
-        this.name = name; //if name is uppercase then this will pass
+        this.name = name;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(String.format("%-3s", name));
-
-        return sb.toString();
-    }
+//    public void setName(String name) throws BadParameterException, NullParameterException { //setter - THROW BadParameter Exception
+//        if (name == null) {
+//            throw new NullParameterException("Airport name cannot be null.");
+//        }
+//        /*
+//        if (name.equals(null)) {
+//            throw new NullParameterException("airport name cannot be null");
+//        }
+//        */
+//        //CHECKS IF GIVEN NAME IS 3 CHARACTERS
+//        if(name.length() != 3) {
+//            throw new BadParameterException("Incorrect Name Length - REQ: 3 Characters. Given Name: " + name);
+//        }
+//
+//        //CHECK IF NAME IS UPPERCASE - compare given name to uppercase version
+//        String upperCaseCheck = name.toUpperCase();
+//        if(name != upperCaseCheck) {
+//            throw new BadParameterException("Bad name passed -- Not uppercase " + name);
+//        }
+//
+//        //CHECK IF NAME IS ALPHABETIC - compares char ascii values
+//        for(int index = 0; index < name.length()-1; index++) { //a = 97, b = 98
+//            if(name.charAt(index) > name.charAt(index+1)) { //index[0] > index[1]
+//                throw new BadParameterException("Bad name passed -- Not Alphabetic " + name);
+//                //System.out.println("isAlphabetical? " + result);
+//            }
+//            else //index[0] < index[1] -> a(97) < b(98) - CONTINUE CHECK
+//                continue;
+//        }
+//
+//        this.name = name; //if name is uppercase then this will pass
+//    }
 
     @Override
     public boolean equals(Object o) {
@@ -67,4 +75,19 @@ public class Airport {
     public int hashCode() {
         return Objects.hash(name);
     }
+
+    @Override
+    public String toString() {
+        return "Airline{" +
+                "name='" + getName() + '\'' +
+                '}';
+    }
+
+//    @Override
+//    public String toString() {
+//        StringBuilder sb = new StringBuilder();
+//        sb.append(String.format("%-3s", name));
+//
+//        return sb.toString();
+//    }
 }
