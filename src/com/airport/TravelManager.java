@@ -2,9 +2,9 @@ package com.airport;
 
 import com.airport.exception.BadParameterException;
 import com.airport.exception.NullParameterException;
-import com.airport.Airline;
-import com.airport.Flight;
-import com.airport.Airport;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class TravelManager {
 //    public static void main(String[] args) throws NullParameterException, BadParameterException {
@@ -27,21 +27,27 @@ public class TravelManager {
 //        System.out.println(flight);
 //    }}
 
-public static void main(String[] args) {
-    try {
-        Airline airline = new Airline("Spirit");
-        Airport origin = new Airport("ORD");
-        Airport destination = new Airport("DFW");
+    public static void main(String[] args) {
+        try {
+            Airline airline = new Airline("Spirit");
+            Airport origin = new Airport("ORD");
+            Airport destination = new Airport("DFW");
 
-        Flight flight = new Flight(airline, origin, destination);
+            //CommercialFlight commercialFlight = new CommercialFlight("commercial", origin, destination,);
+            //FlightManager.createFlight(airline, origin, destination);
 
-        System.out.println(flight);
-    } catch (NullParameterException ex) {
-        ex.printStackTrace();
-    } catch (BadParameterException ex) {
-        ex.printStackTrace();
+            //Flight FlightManager;.getInstance()
+            List<Flight> flightList = new ArrayList<Flight>();
+            FlightManager.createFlight("commercial");
+            flightList.add(FlightManager.createFlight("type"));
+
+            System.out.println(FlightManager.createFlight("commercial"));
+        } catch (NullParameterException ex) {
+            ex.printStackTrace();
+        } catch (BadParameterException ex) {
+            ex.printStackTrace();
+        }
     }
-}
 
     @Override
     public int hashCode() {
