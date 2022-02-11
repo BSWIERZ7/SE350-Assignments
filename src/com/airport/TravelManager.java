@@ -2,7 +2,7 @@ package com.airport;
 
 import com.airport.exception.BadParameterException;
 import com.airport.exception.NullParameterException;
-
+import com.airport.CommercialFlight;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,19 +29,23 @@ public class TravelManager {
 
     public static void main(String[] args) {
         try {
-            Airline airline = new Airline("Spirit");
-            Airport origin = new Airport("ORD");
-            Airport destination = new Airport("DFW");
+            Airline airline = new Airline("ALPHA");
+            Airport origin = new Airport("ABC");
+            Airport destination = new Airport("XYZ");
 
             //CommercialFlight commercialFlight = new CommercialFlight("commercial", origin, destination,);
             //FlightManager.createFlight(airline, origin, destination);
 
             //Flight FlightManager;.getInstance()
             List<Flight> flightList = new ArrayList<Flight>();
-            FlightManager.createFlight("commercial");
-            flightList.add(FlightManager.createFlight("type"));
+            flightList = FlightManager.getInstance()
+                    .createFlight("commercial", airline, origin, destination, departureTime, flightNumber);; //create instance with our singleton
 
-            System.out.println(FlightManager.createFlight("commercial"));
+            //FlightManager.createFlight("commercial", airline, origin, destination, departureTime, flightNumber);
+            //flightList.add(FlightManager.createFlight("type"));
+
+            //System.out.println(FlightManager.createFlight("commercial"));
+            System.out.println(flightList);
         } catch (NullParameterException ex) {
             ex.printStackTrace();
         } catch (BadParameterException ex) {

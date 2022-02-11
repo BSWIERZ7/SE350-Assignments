@@ -21,7 +21,7 @@ public class CommercialFlight {
 
 
 
-    public CommercialFlight() throws NullParameterException, BadParameterException {
+    public CommercialFlight(Airline airline, Airport origin, Airport destination, UUID flightNumber, Date departureTime) throws NullParameterException, BadParameterException {
         setAirline(airline);
         setOrigin(origin);
         setDestination(destination);
@@ -36,7 +36,7 @@ public class CommercialFlight {
     }
 
     public void setDepartureTime() {
-        this.departureTime = new Date(2022, 05, 05, 13, 30);
+        this.departureTime = new Date(2022, 02, 22, 12, 30);
         //this.departureTime = departureTime;
     }
 
@@ -54,7 +54,7 @@ public class CommercialFlight {
         this.origin = origin;
     }
 
-    private void setAirline() throws NullParameterException {
+    private void setAirline(Airline Airline) throws NullParameterException {
         if (airline.equals(null)) {
             throw new NullParameterException(("Airline cannot be null"));
         }

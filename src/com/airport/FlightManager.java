@@ -2,9 +2,16 @@ package com.airport;
 
 import com.airport.exception.BadParameterException;
 import com.airport.exception.NullParameterException;
-
+import com.airport.Airline;
+import com.airport.Airport;
+import com.airport.CommercialFlight;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
+import java.util.Date;
+import java.util.Objects;
+import java.lang.String;
+import java.lang.*;
 
 //to access Singleton object
     //singleton.getInstance().someMethod(); -> FlightManager.getInstance().someMethod();
@@ -26,13 +33,14 @@ public final class FlightManager{
     }
     //public static void createFlight() throws BadParameterException, NullParameterException {
     //public static void createFlight(String type, Airline airline, Airport origin, Airport destination) throws BadParameterException, NullParameterException {
-    public static Flight createFlight(String type) throws BadParameterException, NullParameterException {
+    public static Flight createFlight(String type, Airline airline, Airport origin, Airport destination, UUID setFlightNumber, Date setDepartureTime) throws BadParameterException, NullParameterException {
         //if(type.equals)
         //CommercialFlight flight = new CommercialFlight();
         //Do flightFactory.createFlight(type);
         //flightFactory.createFlight(commercial);
-        //Flight newFlight = FlightFactory.createFlight("commercial");
-        flights.add(FlightFactory.createFlight("commercial"));
+        Flight newFlight = FlightFactory.createFlight(type, airline, origin, destination, setFlightNumber, setDepartureTime);
+        //flights.add(FlightFactory.createFlight("commercial"));
+        flights.add(newFlight);
         return (Flight) flights;
     }
 
