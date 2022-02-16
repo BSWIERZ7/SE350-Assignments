@@ -6,7 +6,7 @@ import com.airport.exception.NullParameterException;
 import java.util.Date;
 import java.util.Objects;
 import java.util.UUID;
-
+import com.airport.Flight;
 import java.lang.String;
 import java.lang.*;
 
@@ -21,7 +21,8 @@ public class CommercialFlight {
 
 
 
-    public CommercialFlight(Airline airline, Airport origin, Airport destination, UUID flightNumber, Date departureTime) throws NullParameterException, BadParameterException {
+    public CommercialFlight(Airline airline, Airport origin, Airport destination, UUID flightNumber, Date departureTime)
+            throws NullParameterException, BadParameterException {
         setAirline(airline);
         setOrigin(origin);
         setDestination(destination);
@@ -36,8 +37,8 @@ public class CommercialFlight {
     }
 
     public void setDepartureTime() {
-        this.departureTime = new Date(2022, 02, 22, 12, 30);
-        //this.departureTime = departureTime;
+        //this.departureTime = new Date(2022, 02, 22, 12, 30);
+        this.departureTime = departureTime;
     }
 
     private void setDestination(Airport destination) throws NullParameterException {

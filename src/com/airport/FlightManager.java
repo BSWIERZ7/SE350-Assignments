@@ -2,14 +2,11 @@ package com.airport;
 
 import com.airport.exception.BadParameterException;
 import com.airport.exception.NullParameterException;
-import com.airport.Airline;
-import com.airport.Airport;
-import com.airport.CommercialFlight;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.util.Date;
-import java.util.Objects;
 import java.lang.String;
 import java.lang.*;
 
@@ -30,6 +27,7 @@ public final class FlightManager{
     }
 
     private FlightManager() { //will cause above if statement to fail if 2nd attempt at instance
+        flights = new ArrayList<Flight>();
     }
     //public static void createFlight() throws BadParameterException, NullParameterException {
     //public static void createFlight(String type, Airline airline, Airport origin, Airport destination) throws BadParameterException, NullParameterException {
@@ -41,7 +39,19 @@ public final class FlightManager{
         Flight newFlight = FlightFactory.createFlight(type, airline, origin, destination, setFlightNumber, setDepartureTime);
         //flights.add(FlightFactory.createFlight("commercial"));
         flights.add(newFlight);
-        return (Flight) flights;
+        //return (Flight) flights;
+        return newFlight;
+    }
+
+    public static Object getFlightByNumber(String flightNum) {
+        //create for loop that compares each object, if it matches, return it
+        //if it doesn't match continue
+        for(int i = 0; i < flights.size(); i++) {
+            if(flights.get(i).equals(flightNum)) return flights.get(i);
+            else
+                continue;
+        }
+        return null;
     }
 
     //other methods here

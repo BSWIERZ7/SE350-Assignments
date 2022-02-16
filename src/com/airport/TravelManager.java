@@ -5,6 +5,12 @@ import com.airport.exception.NullParameterException;
 import com.airport.CommercialFlight;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Date;
+import java.util.Objects;
+import java.util.UUID;
+import com.airport.Flight;
+import java.lang.String;
+import java.lang.*;
 
 public class TravelManager {
 //    public static void main(String[] args) throws NullParameterException, BadParameterException {
@@ -32,20 +38,23 @@ public class TravelManager {
             Airline airline = new Airline("ALPHA");
             Airport origin = new Airport("ABC");
             Airport destination = new Airport("XYZ");
-
+            Date departureTime = new Date(2022, 0, 15, 5, 00);
+            //String departureTime = CommercialFlight.setDepartureTime();
             //CommercialFlight commercialFlight = new CommercialFlight("commercial", origin, destination,);
             //FlightManager.createFlight(airline, origin, destination);
 
             //Flight FlightManager;.getInstance()
-            List<Flight> flightList = new ArrayList<Flight>();
-            flightList = FlightManager.getInstance()
-                    .createFlight("commercial", airline, origin, destination, departureTime, flightNumber);; //create instance with our singleton
-
+            //List<Flight> flightList = new ArrayList<Flight>();
+            String flightList = FlightManager.getInstance().createFlight("commercial", airline, origin, destination, departureTime);
+            //String flightList = FlightManager.getInstance().createFlight("commercial", airline, origin, destination, departureTime, flightNumber); //create instance with our singleton
+            List<Flight> flight = FlightManager.getInstance().getFlightByFlightNumber(flightNumber);
+            //flightList = FlightManager.getInstance().createFlight("commercial", airline, origin, destination);
             //FlightManager.createFlight("commercial", airline, origin, destination, departureTime, flightNumber);
             //flightList.add(FlightManager.createFlight("type"));
 
             //System.out.println(FlightManager.createFlight("commercial"));
-            System.out.println(flightList);
+            System.out.println(flightList.get());
+            //ystem.out.println(flightList);
         } catch (NullParameterException ex) {
             ex.printStackTrace();
         } catch (BadParameterException ex) {
