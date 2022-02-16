@@ -6,7 +6,6 @@ import com.airport.exception.NullParameterException;
 import java.util.Date;
 import java.util.Objects;
 import java.util.UUID;
-import com.airport.Flight;
 import java.lang.String;
 import java.lang.*;
 
@@ -15,13 +14,13 @@ public class CommercialFlight {
     private Airline airline; //airline: Airline
     private Airport origin; //origin: Airport
     private Airport destination; //destination: Airport
-    private UUID flightNumber;
-    private Date departureTime; //departureTime: Date
+    private static UUID flightNumber;
+    private static Date departureTime; //departureTime: Date
     //private String flightNumber; //flightNumber: String
 
 
-
-    public CommercialFlight(Airline airline, Airport origin, Airport destination, UUID flightNumber, Date departureTime)
+    //public CommercialFlight(Airline airline, Airport origin, Airport destination, UUID flightNumber, Date departureTime)
+    public CommercialFlight(Airline airline, Airport origin, Airport destination, Date departureTime)
             throws NullParameterException, BadParameterException {
         setAirline(airline);
         setOrigin(origin);
@@ -74,11 +73,11 @@ public class CommercialFlight {
         return destination.toString();
     }
 
-    public String getFlightNumber() {
+    public static String getFlightNumber() {
         return flightNumber.toString();
     }
 
-    public String getDepartureTime() {
+    public static String getDepartureTime() {
         return departureTime.toString();
     }
 

@@ -5,7 +5,6 @@ import com.airport.exception.NullParameterException;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 import java.util.Date;
 import java.lang.String;
 import java.lang.*;
@@ -31,19 +30,24 @@ public final class FlightManager{
     }
     //public static void createFlight() throws BadParameterException, NullParameterException {
     //public static void createFlight(String type, Airline airline, Airport origin, Airport destination) throws BadParameterException, NullParameterException {
-    public static Flight createFlight(String type, Airline airline, Airport origin, Airport destination, UUID setFlightNumber, Date setDepartureTime) throws BadParameterException, NullParameterException {
+    //public static Flight createFlight(String type, Airline airline, Airport origin, Airport destination, UUID setFlightNumber, Date departureTime) throws BadParameterException, NullParameterException {
+    public String createFlight(String type, Airline airline, Airport origin, Airport destination, Date departureTime) throws BadParameterException, NullParameterException {
         //if(type.equals)
         //CommercialFlight flight = new CommercialFlight();
         //Do flightFactory.createFlight(type);
         //flightFactory.createFlight(commercial);
-        Flight newFlight = FlightFactory.createFlight(type, airline, origin, destination, setFlightNumber, setDepartureTime);
+        String flightNumber = CommercialFlight.getFlightNumber();
+        //departureTime = CommercialFlight.getDepartureTime();
+        //Flight newFlight = FlightFactory.createFlight(type, airline, origin, destination, setFlightNumber, setDepartureTime);
+        Flight newFlight = FlightFactory.createFlight(type, airline, origin, destination, departureTime);
         //flights.add(FlightFactory.createFlight("commercial"));
         flights.add(newFlight);
         //return (Flight) flights;
-        return newFlight;
+        return flightNumber;
+        //return newFlight;
     }
 
-    public static Object getFlightByNumber(String flightNum) {
+    public static Flight getFlightByNumber(String flightNum) {
         //create for loop that compares each object, if it matches, return it
         //if it doesn't match continue
         for(int i = 0; i < flights.size(); i++) {
