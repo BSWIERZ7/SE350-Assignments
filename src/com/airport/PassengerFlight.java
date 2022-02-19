@@ -2,29 +2,29 @@ package com.airport;
 
 import com.airport.exception.BadParameterException;
 import com.airport.exception.NullParameterException;
-import com.airport.Airport;
-import com.airport.Airline;
+
 import java.util.Date;
 import java.util.Objects;
 import java.util.UUID;
 import java.lang.String;
 import java.lang.*;
 
-
-public class CommercialFlight implements Flight {
+public class PassengerFlight implements Flight {
 
     private Airline airline;
     private Airport origin;
     private Airport destination;
     private UUID flightNumber;
     private Date departureTime;
+    private int passengerCapacity;
 
-    public CommercialFlight(Airline airline, Airport origin, Airport destination) throws NullParameterException {
+    public PassengerFlight(Airline airline, Airport origin, Airport destination, int passengerCapacity) throws NullParameterException, BadParameterException {
         setAirline(airline);
         setOrigin(origin);
         setDestination(destination);
         setFlightNumber();
         setDepartureTime();
+        setPassengerCapacity(this.passengerCapacity);
     }
 
     private void setFlightNumber() {
@@ -56,6 +56,14 @@ public class CommercialFlight implements Flight {
         this.airline = airline;
     }
 
+    private void setPassengerCapacity(int passengerCapacity) throws BadParameterException {
+        if (this.passengerCapacity <= 0) {
+            throw new BadParameterException("passengerCapacity must be a non-zero integer");
+        }
+        this.passengerCapacity = passengerCapacity;
+    }
+
+
     public String getAirline() {
         return airline.toString();
     }
@@ -80,22 +88,20 @@ public class CommercialFlight implements Flight {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        CommercialFlight commercialFlight = (CommercialFlight) o;
-        return Objects.equals(airline, commercialFlight.airline) &&
-                Objects.equals(origin, commercialFlight.origin) &&
-                Objects.equals(destination, commercialFlight.destination) &&
-                Objects.equals(flightNumber, commercialFlight.flightNumber) &&
-                Objects.equals(departureTime, commercialFlight.departureTime);
+        PassengerFlight PassengerFlight = (PassengerFlight) o;
+        return Objects.equals(airline, PassengerFlight.airline) &&
+                Objects.equals(origin, PassengerFlight.origin) &&
+                Objects.equals(destination, PassengerFlight.destination) &&
+                Objects.equals(flightNumber, PassengerFlight.flightNumber) &&
+                Objects.equals(departureTime, PassengerFlight.departureTime);
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(airline, origin, destination, flightNumber, departureTime);
-    }
+    public int hashCode() { return Objects.hash(airline, origin, destination, flightNumber, departureTime); }
 
     @Override
     public String toString() {
-        return "Flight{" +
+        return "PassengerFlight{" +
                 "airline=" + getAirline() +
                 ", origin=" + getOrigin() +
                 ", destination=" + getDestination() +

@@ -5,37 +5,33 @@ import com.airport.exception.NullParameterException;
 
 import java.util.Objects;
 
+//NO need to instantiate a unique object for each flight.
+//cache Airline object instances so that they can be re-used
+//ensure that the cached Airline objects are immutable
+//repeat for airport
 public class Airline {
 
     private String name;
 
-    public Airline(String name) throws BadParameterException, NullParameterException { //constructor
+    public Airline(String name) throws NullParameterException, BadParameterException {
         setName(name);
     }
 
-    public String getName() { //getter
+    private String getName() {
         return name;
     }
 
-    public void setName(String name) throws NullParameterException, BadParameterException { //setter name MUST be less than 8 Characters
-
-        if (name == null) { //check for NULL
+    private void setName(String name) throws NullParameterException, BadParameterException {
+        if (name == null) {
             throw new NullParameterException("Airline name cannot be null.");
         }
-//        if (name.equals(null)) {
-//            throw new NullParameterException("airline name cannot be null");
-//        }
-        if (name.length() >= 8 ) {
-            throw new BadParameterException("Bad Name passed to setName: " + name);
-        }
-        this.name = name; //name is between 1-7 chars. This line will never execute if above Exception is thrown
-    }
 
-    /*
-    public int length() { //for length of airline Name
-        return name.length();
+        if (name.length() > 8) {
+            throw new BadParameterException("Invalid name.");
+        }
+
+        this.name = name;
     }
-    */
 
     @Override
     public boolean equals(Object o) {
@@ -50,17 +46,10 @@ public class Airline {
         return Objects.hash(name);
     }
 
-//    @Override
-//    public String toString() {
-//        StringBuilder sb = new StringBuilder();
-//        sb.append(String.format("%-8s", name));
-//
-//        return sb.toString();
-//    }
-
     @Override
     public String toString() {
-        return "Airport{" +
-                "name='" + getName() + '\'' + '}';
+        return "Airline{" +
+                "name='" + getName() + '\'' +
+                '}';
     }
 }

@@ -5,16 +5,19 @@ import com.airport.exception.NullParameterException;
 
 import java.util.Objects;
 
-
-//REQ: MUST ENFORCE NAME PASSED to be 3 Alphabetic & Capitalized Letters
+//NO need to instantiate a unique object for each flight.
+//cache Airline object instances so that they can be re-used
+//ensure that the cached Airline objects are immutable
+//repeat for airport
 public class Airport {
+
     private String name;
 
-    public Airport(String name) throws BadParameterException, NullParameterException { //constructor
+    public Airport(String name) throws NullParameterException, BadParameterException {
         setName(name);
     }
 
-    private String getName() { //getter
+    private String getName() {
         return name;
     }
 
@@ -30,45 +33,12 @@ public class Airport {
         this.name = name;
     }
 
-//    public void setName(String name) throws BadParameterException, NullParameterException { //setter - THROW BadParameter Exception
-//        if (name == null) {
-//            throw new NullParameterException("Airport name cannot be null.");
-//        }
-//        /*
-//        if (name.equals(null)) {
-//            throw new NullParameterException("airport name cannot be null");
-//        }
-//        */
-//        //CHECKS IF GIVEN NAME IS 3 CHARACTERS
-//        if(name.length() != 3) {
-//            throw new BadParameterException("Incorrect Name Length - REQ: 3 Characters. Given Name: " + name);
-//        }
-//
-//        //CHECK IF NAME IS UPPERCASE - compare given name to uppercase version
-//        String upperCaseCheck = name.toUpperCase();
-//        if(name != upperCaseCheck) {
-//            throw new BadParameterException("Bad name passed -- Not uppercase " + name);
-//        }
-//
-//        //CHECK IF NAME IS ALPHABETIC - compares char ascii values
-//        for(int index = 0; index < name.length()-1; index++) { //a = 97, b = 98
-//            if(name.charAt(index) > name.charAt(index+1)) { //index[0] > index[1]
-//                throw new BadParameterException("Bad name passed -- Not Alphabetic " + name);
-//                //System.out.println("isAlphabetical? " + result);
-//            }
-//            else //index[0] < index[1] -> a(97) < b(98) - CONTINUE CHECK
-//                continue;
-//        }
-//
-//        this.name = name; //if name is uppercase then this will pass
-//    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Airport airport = (Airport) o;
-        return name.equals(airport.name);
+        return Objects.equals(name, airport.name);
     }
 
     @Override
@@ -78,16 +48,8 @@ public class Airport {
 
     @Override
     public String toString() {
-        return "Airline{" +
+        return "Airport{" +
                 "name='" + getName() + '\'' +
                 '}';
     }
-
-//    @Override
-//    public String toString() {
-//        StringBuilder sb = new StringBuilder();
-//        sb.append(String.format("%-3s", name));
-//
-//        return sb.toString();
-//    }
 }

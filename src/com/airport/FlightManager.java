@@ -1,65 +1,43 @@
 package com.airport;
 
-import com.airport.exception.BadParameterException;
-import com.airport.exception.NullParameterException;
-
+import com.airport.Airline;
+import com.airport.Airport;
+import com.airport.Flight;
+import com.airport.FlightFactory;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Date;
-import java.lang.String;
-import java.lang.*;
+import java.util.Optional;
+import java.util.UUID;
 
-//to access Singleton object
-    //singleton.getInstance().someMethod(); -> FlightManager.getInstance().someMethod();
-    //singleton.getInstance().someMethod(); -> FlightManager.getInstance().createFlight();
-    //int intVar = Singleton.getInstance().getSomeInteger();
+public final class FlightManager {
 
-public final class FlightManager{
-    static List<Flight> flights = new ArrayList();
     private static FlightManager ourInstance;
+    private static List<Flight> flights;
 
     public static FlightManager getInstance() throws Exception {
         if (ourInstance == null)
             ourInstance = new FlightManager();
 
-        return ourInstance; //1st instance & reference to 1st instance IF there's a second instance attempt
+        return ourInstance;
     }
 
-    private FlightManager() { //will cause above if statement to fail if 2nd attempt at instance
+    private FlightManager() {
         flights = new ArrayList<Flight>();
     }
-    //public static void createFlight() throws BadParameterException, NullParameterException {
-    //public static void createFlight(String type, Airline airline, Airport origin, Airport destination) throws BadParameterException, NullParameterException {
-    //public static Flight createFlight(String type, Airline airline, Airport origin, Airport destination, UUID setFlightNumber, Date departureTime) throws BadParameterException, NullParameterException {
-    public String createFlight(String type, Airline airline, Airport origin, Airport destination, Date departureTime) throws BadParameterException, NullParameterException {
-        //if(type.equals)
-        //CommercialFlight flight = new CommercialFlight();
-        //Do flightFactory.createFlight(type);
-        //flightFactory.createFlight(commercial);
-        String flightNumber = CommercialFlight.getFlightNumber();
-        //departureTime = CommercialFlight.getDepartureTime();
-        //Flight newFlight = FlightFactory.createFlight(type, airline, origin, destination, setFlightNumber, setDepartureTime);
-        Flight newFlight = FlightFactory.createFlight(type, airline, origin, destination, departureTime);
-        //flights.add(FlightFactory.createFlight("commercial"));
-        flights.add(newFlight);
-        //return (Flight) flights;
-        return flightNumber;
-        //return newFlight;
+
+    //public String createFlight(String type, Airline airline, Airport origin, Airport destination) {
+    public String createFlight(String type, Airline airline, Airport origin, Airport destination, int passengerCapacity) {
+        //Flight flight = FlightFactory.createFlight(type, airline, origin, destination);
+        Flight flight = FlightFactory.createFlight(type, airline, origin, destination, passengerCapacity);
+        flights.add(flight);
+
+        return flight.getFlightNumber();
     }
 
-    public static Flight getFlightByNumber(String flightNum) {
-        //create for loop that compares each object, if it matches, return it
-        //if it doesn't match continue
-        for(int i = 0; i < flights.size(); i++) {
-            if(flights.get(i).equals(flightNum)) return flights.get(i);
-            else
-                continue;
-        }
-        return null;
+    public Optional<Flight> getFlightByFlightNumber(String flightNumber) {
+        return flights.stream()
+                .filter(flt -> flt.getFlightNumber().equals(flightNumber))
+                .findFirst();
     }
 
-    //other methods here
-    public void printHello() {
-        System.out.println("Hello");
-    }
 }
