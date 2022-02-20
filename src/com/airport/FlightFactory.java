@@ -41,7 +41,7 @@ public class FlightFactory {
     }
 
 
-
+    //test
     //airport and airline is the same for all flights so recycle that section. Part that changes is flightnumber and passengercapacity
     //add a getFlight()
     //public static Flight getFlight(String flight) {return flight};
