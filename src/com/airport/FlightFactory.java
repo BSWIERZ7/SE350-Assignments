@@ -44,7 +44,7 @@ public class FlightFactory {
 
     //airport and airline is the same for all flights so recycle that section. Part that changes is flightnumber and passengercapacity
     //add a getFlight()
-    public static Flight getFlight(String flight) {return flight};
+    //public static Flight getFlight(String flight) {return flight};
 
     /* //before changes w/ flyweight pattern
     public static Flight createFlight(String type, Airline airline, Airport origin, Airport destination, int passengerCapacity) {
