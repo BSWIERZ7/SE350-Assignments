@@ -27,7 +27,24 @@ public final class FlightManager {
 
     //public String createFlight(String type, Airline airline, Airport origin, Airport destination) {
     public String createFlight(String type, Airline airline, Airport origin, Airport destination, int passengerCapacity) {
+        /*
         //Flight flight = FlightFactory.createFlight(type, airline, origin, destination);
+        //will need to do an if statement to check whether its commercial or passenger
+        if(type.equals("commercialFlight")) {
+            Flight flight = FlightFactory.createFlight(type, airline, origin, destination);
+            //Flight flight = FlightFactory.createFlight(type, airline, origin, destination, passengerCapacity);
+            flights.add(flight);
+            return flight.getFlightNumber();
+        }
+        else if(type.equals("passengerFlight")) {
+            Flight flight = FlightFactory.createFlight(type, airline, origin, destination, passengerCapacity);
+            flights.add(flight);
+            return flight.getFlightNumber();
+        }
+        //else return null;
+        return type;
+        //return flight.getFlightNumber();
+         */
         Flight flight = FlightFactory.createFlight(type, airline, origin, destination, passengerCapacity);
         flights.add(flight);
 

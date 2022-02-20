@@ -84,6 +84,9 @@ public class PassengerFlight implements Flight {
         return departureTime.toString();
     }
 
+    //public String getPassengerCapacity() { return passengerCapacity.toString(); }
+    public int getPassengerCapacity() { return passengerCapacity; }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -93,7 +96,8 @@ public class PassengerFlight implements Flight {
                 Objects.equals(origin, PassengerFlight.origin) &&
                 Objects.equals(destination, PassengerFlight.destination) &&
                 Objects.equals(flightNumber, PassengerFlight.flightNumber) &&
-                Objects.equals(departureTime, PassengerFlight.departureTime);
+                Objects.equals(departureTime, PassengerFlight.departureTime) &&
+                Objects.equals(passengerCapacity, PassengerFlight.passengerCapacity);
     }
 
     @Override
@@ -107,6 +111,7 @@ public class PassengerFlight implements Flight {
                 ", destination=" + getDestination() +
                 ", flightNumber=" + getFlightNumber() +
                 ", departureTime=" + getDepartureTime() +
+                ", passengerCapacity=" + getPassengerCapacity() +
                 '}';
     }
 }
