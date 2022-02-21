@@ -23,17 +23,17 @@ public class TravelManager {
             int passengerCapacity = 10;
 
 
-            //CommercialFlight commercialFlight = new CommercialFlight(airline, origin, destination);
-            String flightNumber = FlightManager.getInstance().createFlight("commercialFlight", airline, origin, destination, passengerCapacity);
-            //String flightNumber = FlightManager.getInstance().createFlight("commercialFlight", airline, origin, destination);
-            Optional<Flight> flight = FlightManager.getInstance().getFlightByFlightNumber(flightNumber);
-
-            //passanger flight
-            String flightNumber2 = FlightManager.getInstance().createFlight("passengerFlight", airline, origin, destination, passengerCapacity);
-            Optional<Flight> flight2 = FlightManager.getInstance().getFlightByFlightNumber(flightNumber2);
-
+            //Instance of Commercial Flight
+            String flightNumber_commercial = FlightManager.getInstance().createFlight("commercialFlight", airline, origin, destination, passengerCapacity);
+            Optional<Flight> flight = FlightManager.getInstance().getFlightByFlightNumber(flightNumber_commercial);
             System.out.println(flight.get());
+
+            /* //Instance of Passenger Flight
+            String flightNumber_passenger = FlightManager.getInstance().createFlight("passengerFlight", airline, origin, destination, passengerCapacity);
+            Optional<Flight> flight2 = FlightManager.getInstance().getFlightByFlightNumber(flightNumber_passenger);
             System.out.println(flight2.get());
+            */
+
         } catch (NullParameterException ex) {
             ex.printStackTrace();
         } catch (BadParameterException ex) {

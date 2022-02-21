@@ -6,14 +6,23 @@ import com.airport.Airport;
 import com.airport.Airline;
 import com.airport.Flight;
 import com.airport.PassengerFlight;
+import java.util.HashMap;
+import java.util.Map;
 
 public class FlightFactory {
     private FlightFactory() {
     }
 
+    //private static Map<String, Flight> flightCache = new HashMap<>();
+    private static Map<Airline, Flight> airlineFlightCache = new HashMap<>();
+    private static Map<Airport, Flight> airportFlightCache = new HashMap<>();
+
     public static Flight createFlight(String type, Airline airline, Airport origin, Airport destination, int passengerCapacity) {
         if (type.equals("commercialFlight")) { //create commercialFlight
             try {
+                 //Flight newAirline = airlineFlightCache.computerIfAbsent(Flight, newFlight -> {
+                 //    return new CommercialFlight(airline, origin, destination);
+                 //}); //see week6 slide 39
                 return new CommercialFlight(airline, origin, destination);
             } catch(NullParameterException e) {
                 return null;
