@@ -14,8 +14,8 @@ public class FlightFactory {
     }
 
     //private static Map<String, Flight> flightCache = new HashMap<>();
-    private static Map<Airline, Flight> airlineFlightCache = new HashMap<>();
-    private static Map<Airport, Flight> airportFlightCache = new HashMap<>();
+    private static Map<Airline, Flight> airlineFlightCache = new HashMap<>(); //airline
+    private static Map<Airport, Flight> airportFlightCache = new HashMap<>(); //origin, destination
 
     public static Flight createFlight(String type, Airline airline, Airport origin, Airport destination, int passengerCapacity) {
         if (type.equals("commercialFlight")) { //create commercialFlight
@@ -28,7 +28,7 @@ public class FlightFactory {
                 return null;
             }
         }
-        else if (type.equals("passengerFlight")) { //create passangerFlight
+        else if (type.equals("passengerFlight")) { //create passengerFlight
             try {
                 return new PassengerFlight(airline, origin, destination, passengerCapacity);
             } catch(NullParameterException e) {
@@ -41,6 +41,7 @@ public class FlightFactory {
 
         else return null;
     }
+
     //test
     //airport and airline is the same for all flights so recycle that section. Part that changes is flightnumber and passengercapacity
     //add a getFlight()
