@@ -15,34 +15,34 @@ import java.util.Optional;
 
 public class TravelManager {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws Exception, NullParameterException {
         try {
-            //Airline airline = new Airline("ALPHA");
-            Airline airline = AirlineFactory.createAirline("Alpha");
-            Airport origin = AirportFactory.createOrigin("ABC");
-            Airport destination = AirportFactory.createDestination("XYZ");
-            //Airport origin = new Airport("ABC");
-            //Airport destination = new Airport("XYZ");
-            int passengerCapacity = 10;
+        //Airline airline = new Airline("ALPHA");
+        Airline airline = AirlineFactory.createAirline("Alpha");
+        Airport origin = AirportFactory.createOrigin("ABC");
+        Airport destination = AirportFactory.createDestination("XYZ");
+        //Airport origin = new Airport("ABC");
+        //Airport destination = new Airport("XYZ");
+        int passengerCapacity = 10;
 
 
-            //Instance of Commercial Flight
-            String flightNumber_commercial = FlightManager.getInstance().createFlight("commercialFlight", airline, origin, destination, passengerCapacity);
-            Optional<Flight> flight = FlightManager.getInstance().getFlightByFlightNumber(flightNumber_commercial);
-            System.out.println(flight.get());
+        //Instance of Commercial Flight
+        String flightNumber_commercial = FlightManager.getInstance().createFlight("commercialFlight", airline, origin, destination, passengerCapacity);
+        Optional<Flight> flight = FlightManager.getInstance().getFlightByFlightNumber(flightNumber_commercial);
+        System.out.println(flight.get());
 
-            ///* //Instance of Passenger Flight
-            String flightNumber_passenger = FlightManager.getInstance().createFlight("passengerFlight", airline, origin, destination, passengerCapacity);
-            Optional<Flight> flight2 = FlightManager.getInstance().getFlightByFlightNumber(flightNumber_passenger);
-            System.out.println(flight2.get());
-            //*/
+        ///* //Instance of Passenger Flight
+        //String flightNumber_passenger = FlightManager.getInstance().createFlight("passengerFlight", airline, origin, destination, passengerCapacity);
+        //Optional<Flight> flight2 = FlightManager.getInstance().getFlightByFlightNumber(flightNumber_passenger);
+        //System.out.println(flight2.get());
+        //*/
 
             //Airline airline = AirlineFactory.createAirline("Alpha");
-        } catch (NullParameterException ex) {
-            ex.printStackTrace();
-        } catch (BadParameterException ex) {
-            ex.printStackTrace();
-        }
+    } catch (NullParameterException e) {
+        e.printStackTrace();
+    } catch (BadParameterException e) {
+        e.printStackTrace();
+    }
     }
 
 }

@@ -21,7 +21,7 @@ public class AirportFactory {
 
     public static Airport createOrigin(String origin) {
         //if (type.equals("commercialFlight")) { //create commercialFlight
-        return airportFlightCache.computeIfAbsent(origin, newAirport -> {
+        return airportFlightCache.computeIfAbsent(origin, newOrig -> {
             //Airline airline1 = airline;
             Airport newOrigin = null;
             //Airport newDestination = null;
@@ -40,7 +40,7 @@ public class AirportFactory {
 
     public static Airport createDestination(String destination) {
         //if (type.equals("commercialFlight")) { //create commercialFlight
-        return airportFlightCache.computeIfAbsent(destination, newAirport -> {
+        return airportFlightCache.computeIfAbsent(destination, newDest -> {
             //Airline airline1 = airline;
             Airport newDestination = null;
             //Airport newDestination = null;
