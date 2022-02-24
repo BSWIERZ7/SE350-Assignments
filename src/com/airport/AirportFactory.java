@@ -28,12 +28,14 @@ public class AirportFactory {
             try {
                 newOrigin = new Airport(origin);
                 //newDestination = new Airport(destination);
+                return airportFlightCache.put(origin, newOrigin);
             } catch (NullParameterException e) {
                 e.printStackTrace();
             } catch (BadParameterException e) {
                 e.printStackTrace();
             }
-            return airportFlightCache.put(origin, newOrigin);
+            return null;
+            //return airportFlightCache.put(origin, newOrigin);
         });
 
     }
@@ -46,13 +48,15 @@ public class AirportFactory {
             //Airport newDestination = null;
             try {
                 newDestination = new Airport(destination);
+                return airportFlightCache.put(destination, newDestination);
                 //newDestination = new Airport(destination);
             } catch (NullParameterException e) {
                 e.printStackTrace();
             } catch (BadParameterException e) {
                 e.printStackTrace();
             }
-            return airportFlightCache.put(destination, newDestination);
+            return null;
+            //return airportFlightCache.put(destination, newDestination);
         });
     }
 

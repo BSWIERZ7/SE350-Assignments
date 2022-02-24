@@ -22,9 +22,10 @@ public class PassengerFlight implements Flight {
         setAirline(airline);
         setOrigin(origin);
         setDestination(destination);
+        setPassengerCapacity(passengerCapacity);
         setFlightNumber();
         setDepartureTime();
-        setPassengerCapacity(this.passengerCapacity);
+        //setPassengerCapacity(this.passengerCapacity);
     }
 
     private void setFlightNumber() {
@@ -60,7 +61,7 @@ public class PassengerFlight implements Flight {
         if (this.passengerCapacity <= 0) {
             throw new BadParameterException("passengerCapacity must be a non-zero integer");
         }
-        this.passengerCapacity = passengerCapacity;
+        this.passengerCapacity = passengerCapacity; //not 0
     }
 
 
@@ -68,9 +69,7 @@ public class PassengerFlight implements Flight {
         return airline.toString();
     }
 
-    public String getOrigin() {
-        return origin.toString();
-    }
+    public String getOrigin() { return origin.toString(); }
 
     public String getDestination() {
         return destination.toString();
@@ -84,6 +83,8 @@ public class PassengerFlight implements Flight {
         return departureTime.toString();
     }
 
+    public int getPassengerCapacity() { return passengerCapacity; }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -93,11 +94,12 @@ public class PassengerFlight implements Flight {
                 Objects.equals(origin, PassengerFlight.origin) &&
                 Objects.equals(destination, PassengerFlight.destination) &&
                 Objects.equals(flightNumber, PassengerFlight.flightNumber) &&
-                Objects.equals(departureTime, PassengerFlight.departureTime);
+                Objects.equals(departureTime, PassengerFlight.departureTime) &&
+                Objects.equals(passengerCapacity, PassengerFlight.passengerCapacity);
     }
 
     @Override
-    public int hashCode() { return Objects.hash(airline, origin, destination, flightNumber, departureTime); }
+    public int hashCode() { return Objects.hash(airline, origin, destination, flightNumber, departureTime, passengerCapacity); }
 
     @Override
     public String toString() {
@@ -107,6 +109,8 @@ public class PassengerFlight implements Flight {
                 ", destination=" + getDestination() +
                 ", flightNumber=" + getFlightNumber() +
                 ", departureTime=" + getDepartureTime() +
+                ", passengerCapacity=" + getPassengerCapacity() +
                 '}';
+
     }
 }

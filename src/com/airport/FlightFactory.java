@@ -23,6 +23,7 @@ public class FlightFactory {
                  //Flight newAirline = airlineFlightCache.computerIfAbsent(Flight, newFlight -> {
                  //    return new CommercialFlight(airline, origin, destination);
                  //}); //see week6 slide 39
+                //return new CommercialFlight(airline, origin, destination, passengerCapacity);
                 return new CommercialFlight(airline, origin, destination);
             } catch(NullParameterException e) {
                 return null;

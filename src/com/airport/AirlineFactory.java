@@ -16,6 +16,7 @@ import com.airport.PassengerFlight;
 public class AirlineFactory {
     private AirlineFactory() {
         //Map<String, Airline> airlineFlightCache = new HashMap<>();
+
     }
 
     //private static Map<String, Flight> flightCache = new HashMap<>();
@@ -26,15 +27,17 @@ public class AirlineFactory {
         return airlineFlightCache.computeIfAbsent(airline, newAirline -> {
             //return new Airline();}
             //Airline airline1 = airline;
-            Airline newName = null;
+            Airline newName;
             try {
                 newName = new Airline(airline);
+                return airlineFlightCache.put(airline, newName);
             } catch (NullParameterException e) {
                 e.printStackTrace();
             } catch (BadParameterException e) {
                 e.printStackTrace();
             }
-            return airlineFlightCache.put(airline, newName);
+            return null;
+            //return airlineFlightCache.put(airline, newName);
         });
 
     }
