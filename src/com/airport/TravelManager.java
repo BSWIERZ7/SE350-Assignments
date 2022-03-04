@@ -16,7 +16,7 @@ import java.util.Optional;
 public class TravelManager {
 
     public static void main(String[] args) throws Exception, NullParameterException {
-        try {
+        //try {
         /* //BEFORE flyweight, instantiated airline/airport objects in this manner
         Airline airline = new Airline("ALPHA");
         Airport origin = new Airport("ABC");
@@ -29,29 +29,13 @@ public class TravelManager {
         Airport origin = AirportFactory.getAirport("ABC");
         Airport destination = AirportFactory.getAirport("XYZ");
 
-        int passengerCapacity = 50;
+        String flightNumber = FlightManager.getInstance().createFlight("commercialFlight", airline, origin, destination, 0);
+        String flightNumber2 = FlightManager.getInstance().createFlight("passengerFlight", airline, origin, destination, 88);
 
-        //*/
-        //Instance of Commercial Flight
-        String flightNumber_commercial = FlightManager.getInstance().createFlight("commercialFlight", airline, origin, destination, passengerCapacity);
-        Optional<Flight> flight = FlightManager.getInstance().getFlightByFlightNumber(flightNumber_commercial);
+        Optional<Flight> flight = FlightManager.getInstance().getFlightByFlightNumber(flightNumber);
+        Optional<Flight> flight2 = FlightManager.getInstance().getFlightByFlightNumber(flightNumber2);
+
         System.out.println(flight.get());
-        //System.out.println(flight);
-        //*/
-
-        //Instance of Passenger Flight
-        String flightNumber_passenger = FlightManager.getInstance().createFlight("passengerFlight", airline, origin, destination, passengerCapacity);
-        FlightManager.getInstance().getFlightByFlightNumber(flightNumber_passenger);
-        System.out.println(flight.get());
-
-        Optional<Flight> flight2 = FlightManager.getInstance().getFlightByFlightNumber(flightNumber_passenger);
         System.out.println(flight2.get());
+    }}
 
-    } catch (NullParameterException e) {
-        e.printStackTrace();
-    } catch (BadParameterException e) {
-        e.printStackTrace();
-    }
-    }
-
-}
